@@ -4,7 +4,7 @@
 - uses a VM abstraction, which is more native to cloud environments
 - RME: name of the extension of ARM 
 
-- Trustzone
+- **Trustzone**
 	- had a normal world to run all your legacy code, your hypervisor, your VMs
 	- secure world: for more sensitive computations. 
 	- Problems with secure world: 
@@ -15,7 +15,7 @@
 			1. Monitor: very similar to the keystone monitor. In charge of enforcing isolation rules, and acts as an interface to the ISA extensions that are available on the SoC 
 			2. The root world is trusted
 			3. Has access to all data that is mapped into any of the 3 worlds
-
+![[Ex sess 03 - Trust Assumptions ARM CCA with RME.png]]
 ### Worlds
 ![[ARM CCA world memory access matrix.png]]
 #### Root world
@@ -60,6 +60,7 @@
 - New hardware mechanism: GPC (granule protection checks, essentially memory filters for access control)
 	- The checks which verify whether the accessor core (runs e.g. the HV) has permission to access PA it's trying to
 - GPT: Granule protection table
+	- enforces isolation between states
 	- Table that keeps track of which PA belongs to which world
 	- Monitor can reprogram this table
 	- Mapping from PA to world (e.g. "realm")
@@ -129,3 +130,16 @@
 - Note:
 	- When moving btw states, it is the responsibility of the SW, NOT the HW, to save and restore register contexts. 
 	- The Monitor saves and restores this register context. 
+
+### From Exercise Session 03
+- isolation between states enforced by GPT (managed by EL3)
+- Isolation between realms enforced by stage 2 translation tables (controlled by R-EL2)
+
+#### TCB of secure world
+![[Ex sess 03 - Trust Assumptions ARM CCA with RME TCB secure world.png]]
+
+#### TCB of non-secure world
+![[Ex sess 03 - Trust Assumptions ARM CCA with RME TCB non-secure world.png]]
+
+#### TCB of one realm in realm world
+![[Ex sess 03 - Trust Assumptions ARM CCA with RME TCB realm world.png]]

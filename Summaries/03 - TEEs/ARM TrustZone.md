@@ -15,3 +15,24 @@
 - only TWO security domains
 - to implement multiple enclaves, must use MMU for further isolation
 - HW: relies on system-wide bus-address filters to separate secure from insecure DRAM partitions
+
+## From Exercise Session Slides 03
+### Trust Assumptions Graphic
+![[Ex sess 03 - Trust Assumptions ARM TrustZone.png]]
+
+### How does ARM TrustZone enforce runtime isolation?
+- Isolation of EL2 to EL1 into "two worlds", one secure, one non-secure / normal
+- Based on NS bit, which is propagated on the bus
+- Context switches managed by software in EL3
+- Memory Isolation etc. must be enforced on subordinate side
+- No protection against physical attacker per se
+### Advantages
+- No interrupt / memory management by untrusted code
+- infrastructure (partially) supports secure state
+- Availability guarantees for secure world possible
+### Disadvantages
+- No physical attacker
+- Only one "protected" state
+- No general attestation scheme
+- All software running before and under software in secure world needs to be trusted -> LARGE software TCB
+- Secure state is often locked for use by device vendors and not generally open for application developers.

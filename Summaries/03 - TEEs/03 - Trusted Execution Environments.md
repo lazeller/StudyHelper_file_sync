@@ -5,7 +5,7 @@ Nice graphic from Keystone paper:
 - [[Notes on SoK Hardware-supposed TEEs (paper)]]
 ## Implementations of TEEs:
 - [[AMD SEV]], SEV-ES, SEV-SNP
-- [[ARM TrustZone]], [[ARM CCA]]
+- [[ARM TrustZone]], [[ARM CCA with RME]]
 - [[Intel SGX]], TDX
 - Keystone ([[Keystone (from paper)]], [[Keystone (from lecture recording)]]), Sanctum, Penglai
 ## CVMs: Confidential Virtual Machines

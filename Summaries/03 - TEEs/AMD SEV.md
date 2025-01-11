@@ -48,3 +48,19 @@ AMD Root CA --certifies--> AMD SEV CA (AMD Certificate Authority) --certifies-->
 - Per-VM level memory encryption
 - The CPU creates a new encryption key when a new VM is spawned, & that key is then used in the MEE when it's shipping data to and from the DRAM
 - per VM different encryption key / each VM gets its own key
+## From Exercise Session Slides 03
+### Trust Assumptions Graphic
+![[Ex sess 03 - Trust Assumptions AMD SEV.png]]
+
+### How does AMD SEV enforce runtime isolation?
+- Isolation at VM-level
+- Every VM's memory is encrypted with its own key
+- Encryption support provided by co-processor
+- Tolerated physical attacker strength depends on SEV version
+
+### Advantages
+- Applications do not need to be specifically adapted (to run in an isolated SEV environment)
+
+### Disadvantages
+- Resilience against physical attackers varies depending on the SEV version
+- Memory management performed by hypervisor

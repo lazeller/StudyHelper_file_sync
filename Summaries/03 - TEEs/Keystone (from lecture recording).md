@@ -72,3 +72,12 @@ CAN DO:
 - NOn-CPU TEEs
 - sovereign cloud: Could protect against Nation state adversaries
 - Sovereign smartphone (use it for phones as well!)
+
+## Info from exercise session slides 03
+![[Ex sess 03 - Trust Assumptions Keystone.png]]
+
+### TCB of untrusted OS
+![[Ex sess 03 - Trust Assumptions Keystone TCB untrusted OS.png]]
+
+### TCB of eapp
+![[Ex sess 03 - Trust Assumptions Keystone TCB eapp.png]]

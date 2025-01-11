@@ -1,4 +1,6 @@
-![[Intel SGX graphic.png]]- current generation
+![[Intel SGX graphic.png]]
+
+- current generation
 - enclaves (contain small pieces of user code)
 - private memory for CPU (encrypted!!)
 - user-level abstraction (no syscalls)
@@ -59,7 +61,7 @@ SGXv2:
 - EPC: Enclave Page Cache -> where encrypted pages are going to be stored in a very particular order, dep on enclave physical page, etcetc
 - EPC dedicated to purely enclave memory
 - EPCM: Enclave Page Cache Map: management of EPC (no enclave can be assigned this part of the memory, where the integrity tree for EPC memory is kept, enclave metadata)
-- Upon machine (with SGX support) boot, have to declare in teh BIOS how much is region that's going to be dedicated to EPC and EPCM (fixed, can't be changed later without BIOS reboot. etc)
+- Upon machine (with SGX support) boot, have to declare in the BIOS how much is region that's going to be dedicated to EPC and EPCM (fixed, can't be changed later without BIOS reboot. etc)
 - for each physical page which is 4 KB, the EPCM has to maintain a hash and then this hash is organized in a Merkle tree. More memory -> larger Merkle tree -> slower MEE
 
 - Scalable SGX (for cloud deployment) -> put away Merkle Tree. Does not protect against physical adversary. 
@@ -90,3 +92,26 @@ Untrusted Memory - what to protect?
 - If the hypervisor tries to read a VM's memory, it just reads zeroes and writes will just fail
 - Attestation: Intel cores itself do the attestation
 - Protections are implemented in microcode
+
+## From Exercise Session Slides 03
+### Trust Assumptions Graphic
+![[Ex sess 03 - Trust Assumptions Intel SGX.png]]
+
+### How does Intel SGX enforce runtime isolation?
+- Hardware tracks if and which enclave is currently executing
+- Enclave memory only accessible if enclave is executing
+- Memory outside CPU die is encrypted
+- Strong physical attacker considered
+
+### Advantages
+- Tolerates strong physical attacker
+- Only CPU and microcode in TCB (+ Intel for attestation)
+
+### Disadvantages
+- Memory and interrupt management performed by OS
+- Applications need to be adapted to run inside an SGX enclave
+- Only "small" applications possible
+- no secure I/O
+
+## More Info
+[Home | SGX 101](https://sgx101.gitbook.io/sgx101)
