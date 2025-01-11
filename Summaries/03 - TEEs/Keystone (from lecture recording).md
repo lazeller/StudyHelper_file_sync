@@ -1,3 +1,4 @@
+(See also [[Keystone (from paper)]])
 Date: 11.11.2024
 ![[Keystone - Architecture and Trust Model Graphic.png]]
 Trusted hardware: 

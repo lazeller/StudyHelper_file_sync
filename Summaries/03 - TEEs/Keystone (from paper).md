@@ -1,10 +1,10 @@
+(See also [[Keystone (from lecture recording)]])
 ## PROs of Customizable TEEs
 - Independent exploration of gaps / trade-offs in existing designs
 - Quick prototyping of new feature requirements
 - A shorter turn-around time for fixes
 - Adaptation to threat-models
 - Usage-specific deployment
-
 ### Motivation
 - Threat model may differ depending on the use case, the application or the hardware platform 
 - --> We allow each enclave to specify its configuration of security features
@@ -12,11 +12,9 @@
 Hypervisor sol results in a trusted layer with a mix of security and virtualization responsibilities -> complicated!
 
 - each enclave operates in its own isolated physical memory
-
 ## PMP: Physical Memory Protection
 - primitive
 - allows the programmable machine mode underneath the OS in RISC-V to specify arbitrary protections on physical memory regions
-
 ## SM: Security Monitor
 - (trusted)
 - provides security boundary (without needing to perform resource management)
@@ -28,7 +26,6 @@ Hypervisor sol results in a trusted layer with a mix of security and virtualizat
 	- M-mode's control of RISC-V PMP standard enables isolation of memory-mapped control features at runtime
 - handles all machine interrupts 
 - Sets machine timer before entering enclave (avoids DoS)
-
 ## RT: runtime (supervisor-mode?)
 - manages the virtual memory of the enclave (and more)
 - implement enclave-specific functionality here
@@ -40,7 +37,6 @@ Hypervisor sol results in a trusted layer with a mix of security and virtualizat
 - Manages lifecycle of user code executing in the enclave, manages memory, services syscalls, etc
 - Each enclave can choose own RT and the RT is never shared btw enclaves
 - Handles exceptions for standard kernel abstractions and might forwards other traps to the untrusted OS via the SM
-
 ## Eapp: enclave user-mode application
 - in U-mode
 - resides in enclave address space -> isolated from untrusted OS or other apps
@@ -53,7 +49,6 @@ Hypervisor sol results in a trusted layer with a mix of security and virtualizat
 	- S-mode (supervisor) for the kernel
 	- H-mode (hypervisor) for the hypervisor
 	- M-mode (machine) which directly accesses physical resources (e.g., interrupts, memory, devices)
-
 ## KEYSTONE
 - requires no changes to CPU-cores, memory controllers, etc
 - HW requirements
@@ -81,7 +76,6 @@ Hypervisor sol results in a trusted layer with a mix of security and virtualizat
 	- Secure Source of Randomness
 	- Remote Attestation
 	- can optionally implement: trusted timers, rollback defense, sealed storage
-
 ### Attacker Models
 #### Physical Attacker
 - can intercept, modify, or replay signals that leave the chip package

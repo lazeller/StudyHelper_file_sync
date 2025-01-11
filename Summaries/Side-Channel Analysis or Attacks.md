@@ -1,5 +1,9 @@
 ## Iago Attacks
 see [[Iago attacks]]
+
+## Controlled Channel Attacks
+[[Notes on Controlled-Channel Attacks - Deterministic Side Channels for Untrusted Operating Systems]]
+
 ## Timing Side Channel
 - measure execution time
 - Classic timing attack -> 
